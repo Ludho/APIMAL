@@ -1,0 +1,542 @@
+/* Importation de la police Roboto */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+/* Définition des principales couleurs : palette de couleur dans images/Palette_couleur */
+
+:root {
+    --active-green: #860156;
+    --background: #a52f3e;
+    --main-green: #f85e5b;
+    --text-color: #f1d0a4;
+    --titre-color: #ffeccb;
+}
+
+p,
+h1,
+h2,
+a,
+ul,
+hr {
+    color: var(--text-color);
+}
+
+body {
+    position: relative;
+    background-color: var(--background);
+    font: 14pt Roboto, Arial, sans-serif;
+    padding: 0;
+    width: 90%;
+    height: 90%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+}
+
+
+/* Partie En-tête */
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-variant: small-caps;
+    font-size: 4em;
+    color: #f1d0a4;
+    /*margin: auto; */
+}
+
+p#explication {
+    font-size: 1.2em;
+}
+
+#recherche {
+    display: flex;
+    margin: auto auto;
+    flex-direction: row;
+}
+
+#recherche>input[type=text],
+#recherche>button {
+    display: block;
+    font-size: 1.2em;
+}
+
+#recherche>input[type=text] {
+    color: var(--active-green);
+    /* Presque noir */
+    flex: 1;
+    padding: 0.7em;
+    border: 0.3em solid var(--main-green);
+    border-right: none;
+}
+
+#recherche>input::placeholder {
+    color: #2d2d2d;
+    /* Presque noir */
+}
+
+#recherche>button {
+    padding: 0.8em 0.8em;
+    /* Bordure invisible pour que le hover ne bouge pas le bouton */
+    border: 1px solid var(--main-green);
+    /* Par défaut, les boutons sont en gris
+	 (S'ils sont "clicables", ils passent en vert) */
+    background-color: var(--titre-color);
+}
+
+
+/* Apparences des boutons clicables */
+
+#recherche>button.btn_clicable {
+    background-color: var(--main-green);
+}
+
+#recherche>button:focus {
+    /* Pour éviter un affichage disgracieux
+		quand le bouton reste en focus */
+    outline: 0 !important;
+}
+
+#recherche>button.btn_clicable:hover {
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+#recherche>button.btn_clicable:active {
+    background-color: var(--active-green);
+}
+
+
+/* GIF de chargement (caché par défaut) */
+
+#bloc-gif-attente {
+    display: none;
+    margin: 40px;
+    text-align: center;
+}
+
+#left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47.5%;
+    height: 100%;
+    min-width: 750px;
+    min-height: 850px;
+    z-index: 1;
+}
+
+#middle-left {
+    min-width: max(19px, 2.5%);
+    height: 100%;
+    border-right: 1px solid white;
+}
+
+#middle-right {
+    min-width: max(19px, 2.5%);
+    height: 100%;
+    border-left: 5px solid white;
+}
+
+#right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47.5%;
+    height: 100%;
+    overflow: hidden;
+    min-width: 750px;
+    min-height: 850px;
+}
+
+#bloc-recherches {
+    width: 750px;
+    height: 850px;
+    text-align: center;
+    position: relative;
+}
+
+#selector {
+    position: relative;
+    width: 750px;
+    height: 850px;
+    overflow: hidden;
+    border-radius: 10%;
+    border: 8px solid var(--main-green)
+}
+
+#bloc-resultats {
+    position: relative;
+    width: 750px;
+    height: 850px;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+#bloc-resultats li {
+    list-style: none;
+}
+
+#bloc-resultats .saison {
+    list-style: none;
+    display: inline;
+    height: 850px;
+    min-width: 600px;
+    max-width: 600px;
+}
+
+#bloc-resultats .fav {
+    list-style: none;
+    display: inline;
+    height: 850px;
+    min-width: 600px;
+    max-width: 600px;
+}
+
+.card_anime {
+    display: inline-block;
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.card_image {
+    width: 225px;
+    height: 318px;
+    overflow: hidden;
+    margin-bottom: 0px;
+    background-color: var(--background);
+    border: 6px solid var(--background);
+    border-radius: 20px 20px 0px 0px;
+}
+
+.season_image {
+    max-width: 100%;
+}
+
+.card_name {
+    overflow: hidden;
+    height: 23px;
+    width: 217px;
+    max-width: 217px;
+    text-align: center;
+    padding: 0px 10px 10px 10px;
+    margin-top: 0px;
+    background-color: var(--background);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.card_titre {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--titre-color);
+}
+
+#bloc-resultats li:nth-child(2n) {
+    background: var(--titre-color);
+}
+
+#bloc-resultats li:nth-child(2n-1) {
+    background: var(--text-color);
+}
+
+#bloc-resultats li:first-child {
+    min-width: 75px;
+}
+
+#bloc-resultats li:last-child {
+    min-width: 75px;
+}
+
+#btn-left {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%) rotate(-90deg);
+    z-index: 2;
+}
+
+#btn-right {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%) rotate(90deg);
+    z-index: 2;
+}
+
+#img_scroll_left {
+    border-radius: 0px 0px 37px 37px;
+    display: none;
+}
+
+#img_scroll_right {
+    border-radius: 0px 0px 37px 37px;
+}
+
+.petite-explicaton {
+    margin-top: 5px;
+    font-style: italic;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+
+/* Section des recherches favorites */
+
+#section-favoris {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    min-width: 594px;
+    max-width: 594px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#liste-favoris {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: auto;
+    padding: 0px;
+    right: 0px;
+}
+
+li p {
+    color: var(--background);
+}
+
+li span {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.element {
+    position: relative;
+    padding: 30px;
+    height: 790px;
+    min-width: 540px;
+    max-width: 540px;
+}
+
+.titre {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: var(--background);
+    padding: 10px 0px;
+    border-radius: 20px;
+}
+
+.imgAnime {
+    display: flex;
+    border: 6px solid var(--background);
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+}
+
+.sec1 {
+    display: flex;
+    flex-direction: raw;
+}
+
+.sec1 p {
+    background-color: var(--background);
+    border-radius: 20px;
+    color: var(--text-color);
+    padding: 0px 40px 0px 0px;
+}
+
+.sec1 p span {
+    background-color: var(--active-green);
+    padding: 10px 2.5px 10px 10px;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 15px;
+    min-width: 100px;
+    display: inline-block;
+    color: var(--titre-color);
+}
+
+.sec2 {
+    margin-top: 20px;
+}
+
+.sec2 p {
+    margin-top: 10px;
+    background-color: var(--background);
+    color: var(--text-color);
+    padding: 10px 20px 10px 20px;
+    border-radius: 0px 20px 20px 20px;
+}
+
+.sec2 span {
+    background-color: var(--active-green);
+    color: var(--titre-color);
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.sec3 {
+    display: flex;
+    flex-direction: raw;
+}
+
+.sec3 p {
+    background-color: var(--background);
+    border-radius: 20px;
+    color: var(--text-color);
+    padding: 0px 40px 0px 0px;
+}
+
+.sec3 p span {
+    background-color: var(--active-green);
+    padding: 10px 2.5px 10px 10px;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 15px;
+    min-width: 60px;
+    display: inline-block;
+    color: var(--titre-color);
+}
+
+.sec3 p:first-child {
+    margin-right: 40px;
+}
+
+.sec3 p:last-child span {
+    min-width: 75px;
+}
+
+.inform {
+    margin-left: 20px;
+}
+
+#girl {
+    position: absolute;
+    bottom: -50px;
+    left: -95px;
+    height: 400px;
+    z-index: 0;
+}
+
+.card_anime {
+    display: inline-block;
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.fav .card_image {
+    background-color: var(--main-green);
+    border: 6px solid var(--main-green);
+}
+
+.fav .card_name {
+    background-color: var(--main-green);
+}
+
+.fav .card_titre {
+    color: var(--titre-color);
+}
+
+.fav {
+    position: relative;
+}
+
+.suppr {
+    position: absolute;
+    background-color: var(--text-color);
+    padding: 10px;
+    max-height: 60px;
+    max-width: 60px;
+    top: 20px;
+    right: 30px;
+    border: 6px solid var(--main-green);
+    border-radius: 0px 20px 0px 20px;
+}
+
+#btn-left-fav {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 60%;
+    left: 100px;
+    transform: translateY(-50%) rotate(-90deg);
+    z-index: 2;
+}
+
+#btn-right-fav {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 60%;
+    right: -55px;
+    transform: translateY(-50%) rotate(90deg);
+    z-index: 2;
+}
+
+#img_scroll_left-fav {
+    border-radius: 37px 37px 37px 37px;
+    display: none;
+}
+
+#img_scroll_right-fav {
+    border-radius: 37px 37px 37px 37px;
+    display: none;
+}
+
+.petite-explicaton-fav {
+    margin-top: 5px;
+    font-style: italic;
+    margin-left: 150px;
+    display: none;
+}
+
+#shake {
+    position: relative;
+}
+
+#shakeError {
+    position: absolute;
+    left: 160px;
+    top: 80px;
+    color: var(--active-green);
+    background-color: var(--main-green);
+    z-index: 5;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: none;
+}
+
+.favOff {
+    position: absolute;
+    padding: 10px;
+    right: -5px;
+    top: 0px;
+    border-radius: 10px;
+}

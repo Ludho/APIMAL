@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <title>AniSearch - M4103C-Projet-JS</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <img id="girl" src="images/Girl.png" alt="alexysgh.tumble.com" title="alexysgh.tumble.com">
+    <div id="left">
+        <div id="bloc-recherches">
+            <header></header>
+            <h1 class="shake">Recherche d'animes</h1>
+
+            <p id="explication">Cette page permet de rechercher des informations liés aux animés via l'API publique non-officielle de <a href="https://jikan.moe/" target="_blank">Jikan</a> qui utilise MyAnimeList.</p>
+            </header>
+
+            <!-- Section de recherche (avec résultats) -->
+            <section id="shake">
+                <p id="shakeError">Veuillez attendre 1 seconde entre chaque requette !</p>
+                <div id="recherche">
+                    <!-- Champ de recherche -->
+                    <input type="text" placeholder="Quel anime cherchez-vous ?" id="search_input" />
+
+                    <!-- Boutons -->
+                    <button id="btn-lancer-recherche" type="button" class="btn_clicable" title="Lancer la recherche">
+						<!-- Icone provenant de flaticon.com -->
+						<img src="images/loupe.svg" alt="Loupe pour recherche" width=22>
+					</button>
+                </div>
+            </section>
+
+            <p class="petite-explicaton">Si la recherche est vide, montre les nouveaux animés de la saison !</p>
+
+            <!-- Section des recherches favorites -->
+            <div id="btn-left-fav"><img id="img_scroll_left-fav" src="images/scrolltop_V2.png" height="75px" width="75px" /></div>
+
+            <div id="btn-right-fav"><img id="img_scroll_right-fav" src="images/scrolltop_V2.png" height="75px" width="75px" /></div>
+            <section id="section-favoris">
+                <ul id="liste-favoris">
+                </ul>
+            </section>
+            <p class="petite-explicaton-fav">Cliquer sur un de vos favoris pour afficher ses informations</p>
+        </div>
+    </div>
+    <div id="middle-left"></div>
+    <div id="middle-right"></div>
+    <div id="right">
+        <div id="bloc-gif-attente">
+            <img src='images/attente-ajax.gif' alt="GIF Attente de résultats" width=50 />
+        </div>
+        <div id="selector">
+            <div id="btn-left"><img id="img_scroll_left" src="images/scrolltop_V2.png" height="75px" width="75px" />
+            </div>
+
+            <div id="btn-right"><img id="img_scroll_right" src="images/scrolltop_V2.png" height="75px" width="75px" />
+            </div>
+
+            <ul id="bloc-resultats">
+                <li></li>
+                <li class="saison"></li>
+                <li id="beforeMe"></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="api.js"></script>
+
+</body>
+
+</html>
